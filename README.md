@@ -8,7 +8,6 @@ Markdown Links
 --------------
 
 * Now YouTube aware capturing channel name and video duration!
-	* There is an issue where the duration doesn't update when clicking to new videos. Just reload the page and you should be good.
 
 
 ### Markdown Page Link
