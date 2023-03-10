@@ -1,5 +1,5 @@
-My Bookmarklets
-===============
+My Bookmarklets v1.0.0
+======================
 
 Repository of the bookmarklets I've used over the years
 
