@@ -1,4 +1,4 @@
-My Bookmarklets v1.1.1
+My Bookmarklets v1.1.2
 ======================
 
 Repository of the bookmarklets I've used over the years
@@ -8,7 +8,6 @@ Markdown Links
 --------------
 
 * Now YouTube aware capturing channel name and video duration!
-	* There is an issue where the duration doesn't update when clicking to new videos. Just reload the page and you should be good.
 
 
 ### Markdown Page Link
