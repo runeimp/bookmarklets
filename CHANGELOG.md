@@ -2,6 +2,14 @@ ChangeLog
 =========
 
 
+Version 1.2.1
+-------------
+
+2023-04-09
+
+* Updated YouTube awareness to not fail on non-watch pages
+
+
 Version 1.2.0
 -------------
 
