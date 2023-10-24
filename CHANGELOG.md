@@ -2,6 +2,16 @@ ChangeLog
 =========
 
 
+Version 1.3.1
+-------------
+
+2023-10-22 - 2023-10-24
+
+* Updated RegEx for recent YouTube changes
+* Added yesterdays changes to the selection versions as well (DOH!)
+* Added code to handle when the tooltip date is not available
+
+
 Version 1.3.0
 -------------
 

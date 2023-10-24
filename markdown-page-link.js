@@ -1,9 +1,9 @@
 /*
 M↓ Page Link
 
-Version: 1.3.0
+Version: 1.3.1
 Description: YouTube and Rust community aware
-Updated: 2023-10-21
+Updated: 2023-10-24
 */
 javascript:(
 	() => {
@@ -11,15 +11,17 @@ javascript:(
 
 		function parseDate(date) {
 			// console.log(`parseDate() | > input: "${date}" | test: ${checkDateRE.test(date)}`);
-			const checkDateRE = /^([Pp]remiere (?<count>\d+) (?<unit>\w+) (ago)|(?<month>\w+) (?<day>\d+), (?<year>\d+))$/; // |^\d{4}
+			const checkDateRE = /^(?<prefix>[Pp]remiered?)? ?((?<count>\d+) (?<unit>\w+) (ago)|(?<month>\w+) (?<day>\d+), (?<year>\d+))$/;
 			let result = '';
 
 			if (checkDateRE.test(date)) {
-				let {count, unit, month, day, year} = checkDateRE.exec(date).groups;
+				let {prefix, count, unit, month, day, year} = checkDateRE.exec(date).groups;
 				let newDate = new Date(Date.now());
 				let transDay = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate());
 				let transMonth = new Date(newDate.getFullYear(), newDate.getMonth());
 				let transYear = new Date(newDate.getFullYear(), 0, 1);
+
+				// console.log(`parseDate() |  prefix: ${prefix} | count: ${count} | unit: ${unit} | month: ${month} | day: ${day} | year: ${year}`);
 
 				if (year != null && month != null && day != null) {
 					console.log(`parseDate() | Input Date Normal | ${date}`);
@@ -129,8 +131,12 @@ javascript:(
 		case D.URL.indexOf('youtube.com/watch') !== -1:
 			let channel = D.querySelector('div#owner #text > a').innerText;
 			let duration = D.querySelector('#movie_player .ytp-time-duration').innerText;
-			let posted = D.querySelector('#description #tooltip').innerText.split('•')[1].trim();
-			// console.log(`document.querySelector(#description #tooltip).innerText.split('•')[1].trim() | posted: ${posted}`);
+			let posted = D.querySelector('#description #tooltip').innerText.trim();
+			if (posted !== '') {
+				posted = posted.split('•')[1].trim();
+			} else {
+				posted = D.querySelector('#description #info span:nth-child(3)').innerText.trim();
+			}
 			posted = parseDate(posted);
 			title = D.title.replace('YouTube',`${channel} - ${posted} - ${duration} - YouTube`);
 			break;
